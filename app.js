@@ -2,6 +2,7 @@ const express = require('express');
 var mongoose = require('mongoose');
 require('dotenv/config');
 const bodyParser = require('body-parser');
+const Post = require('./models/post');
 
 
 var PORT = process.env.PORT || 8081;
@@ -35,6 +36,19 @@ const UpdateRoute = require('./routes/update');
 app.use('/update', UpdateRoute);
 
 ///////////////////////////////////
+
+
+app.get('/heroku', async (req, res) => {
+    try {
+        const posts = await Post.find();
+        res.json(posts);
+    } catch (err) {
+        res.json({ message: err });
+    }
+
+});
+
+
 
 
 app.get('/', function (req, res) {
