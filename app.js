@@ -38,14 +38,18 @@ app.use('/update', UpdateRoute);
 ///////////////////////////////////
 
 
-app.get('/heroku', async (req, res) => {
-    try {
-        const posts = await Post.find();
-        res.json(posts);
-    } catch (err) {
-        res.json({ message: err });
-    }
-
+// Tulostetaan kaikki leffat
+app.get("/leffat", function (req, res) {
+    Post.find({}, null, { limit: 20 }, function (err, results) {
+        // Jos tietokantahaussa tapahtuu virhe, palautetaan virhekoodi myös selaimelle
+        if (err) {
+            res.json("Järjestelmässä tapahtui virhe", 500);
+        }
+        // Muuten lähetetään tietokannan tulokset selaimelle 
+        else {
+            res.json(results, 200);
+        }
+    });
 });
 
 
