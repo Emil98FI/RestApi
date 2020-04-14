@@ -1,0 +1,1 @@
+Rest api jonka tietokanta toimii MongoDB Atlas tietokanta. Tietokannassa on elokuvia rankattuna "IMDB"-tyylisesti.
