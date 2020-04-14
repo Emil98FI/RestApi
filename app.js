@@ -1,5 +1,5 @@
 const express = require('express');
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
 require('dotenv/config');
 const bodyParser = require('body-parser');
 
@@ -47,8 +47,9 @@ app.listen(PORT, function () {
 
 //Yhdistetään MongoDB tietokantaan käyttäjällä joka on määritelty .env tiedostossa
 
-mongoose.connect('mongodb+srv://dbUser:1cNNer3cX4C0pBQ5@cluster0-3foid.mongodb.net/test?retryWrites=true&w=majority', () =>
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://dbUser:1cNNer3cX4C0pBQ5@cluster0-3foid.mongodb.net/test?retryWrites=true&w=majority', () =>
 
     console.log('Connected')
 
-); 
+);
+
