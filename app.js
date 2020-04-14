@@ -47,7 +47,7 @@ app.listen(PORT, function () {
 
 //Yhdistetään MongoDB tietokantaan käyttäjällä joka on määritelty .env tiedostossa
 
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, () =>
+mongoose.connect('mongodb+srv://dbUser:1cNNer3cX4C0pBQ5@cluster0-3foid.mongodb.net/test?retryWrites=true&w=majority', () =>
 
     console.log('Connected')
 
