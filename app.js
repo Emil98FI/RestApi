@@ -38,21 +38,6 @@ app.use('/update', UpdateRoute);
 ///////////////////////////////////
 
 
-// Tulostetaan kaikki leffat
-app.get("/leffat", function (req, res) {
-    Post.find({}, null, { limit: 20 }, function (err, results) {
-        // Jos tietokantahaussa tapahtuu virhe, palautetaan virhekoodi myös selaimelle
-        if (err) {
-            res.json("Järjestelmässä tapahtui virhe", 500);
-        }
-        // Muuten lähetetään tietokannan tulokset selaimelle 
-        else {
-            res.json(results, 200);
-        }
-    });
-});
-
-
 
 
 app.get('/', function (req, res) {
@@ -63,7 +48,7 @@ app.listen(PORT, function () {
     console.log('Example app listening on port 8081!');
 });
 
-//Yhdistetään MongoDB tietokantaan käyttäjällä joka on määritelty .env tiedostossa
+//Yhdistetään MongoDB tietokantaan 
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://dbUser:1cNNer3cX4C0pBQ5@cluster0-3foid.mongodb.net/test?retryWrites=true&w=majority', () =>
 
