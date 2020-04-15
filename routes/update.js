@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 });
 
 
-// Päivitetään dokumenttia
+// Päivitetään dokumenttia halutulla osiolla
 router.patch('/:postId', async (req, res) => {
     try {
         const updatedPost = await Post.updateOne(
